@@ -31,3 +31,12 @@ function operate(a, b, operator) {
     }
 }
 
+const digitsButtons = document.getElementById('digits-btn-container');
+
+for (let i = 0; i <= 9; i++) {
+    const digit = document.createElement('button');
+    digit.classList.add('btn');
+    digit.setAttribute('value', `${i}`);
+    digit.textContent = `${i}`;
+    digitsButtons.appendChild(digit);
+}
