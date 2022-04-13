@@ -28,6 +28,8 @@ function operate(a, b, operator) {
         case '/':
             divide(a, b);
             break;
+        default: 
+            throw Error(`Unsupported operator: ${operator}`);
     }
 }
 
@@ -44,23 +46,42 @@ for (let i = 0; i <= 9; i++) {
 
 const digitsButtons = document.querySelectorAll('.digit');
 
-digitsButtons.forEach(button => {
+const firstNum = document.getElementById('first-number');
+const secondNum = document.getElementById('second-number');
+const operatorDisplay = document.getElementById('operator-display');
+
+firstNum.textContent = "";
+secondNum.textContent = "";
+operatorDisplay.textContent = "";
+
+function inputNumbers() {
+    digitsButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            if (operatorDisplay.textContent === "") {
+                displayNumber(firstNum, e.target.value);
+            } else {
+                displayNumber(secondNum, e.target.value);
+            }
+        });
+    });
+}
+
+function displayNumber(target, value) {
+    target.textContent += value;
+}
+
+function displayOpertor(target, value) {
+    target.textContent = value;
+}
+
+const operatorsButtons = document.querySelectorAll('.operator');
+
+operatorsButtons.forEach(button => {
     button.addEventListener('click', (e) => {
-        displayScreen(e.target.value);
+        displayOpertor(operatorDisplay, e.target.value);
     });
 });
 
-const displayValue = document.createElement('div');
-displayValue.classList.add('display-value');
-displayContainer.appendChild(displayValue);
-displayValue.textContent = "";
+inputNumbers();
 
-function displayScreen(value) {
-    displayValue.textContent += value;
-}
-
-let firstNum;
-let secondNum;
-let operator;
-
-const operatorsButtons = document.querySelectorAll('.operator');
+ 
