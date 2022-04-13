@@ -58,3 +58,9 @@ displayValue.textContent = "";
 function displayScreen(value) {
     displayValue.textContent += value;
 }
+
+let firstNum;
+let secondNum;
+let operator;
+
+const operatorsButtons = document.querySelectorAll('.operator');
