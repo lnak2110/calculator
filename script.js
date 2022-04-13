@@ -53,7 +53,8 @@ digitsButtons.forEach(button => {
 const displayValue = document.createElement('div');
 displayValue.classList.add('display-value');
 displayContainer.appendChild(displayValue);
+displayValue.textContent = "";
 
 function displayScreen(value) {
-    displayValue.textContent = value;
+    displayValue.textContent += value;
 }
